@@ -14,6 +14,7 @@ public void draw()
 }
 public void sierpinski(int x, int y, int len) 
 {
+  noStroke();
   if (len <= 25) {
     triangle(x, y, x+len, y, x+(len/2), y+len);
   } else {
@@ -27,6 +28,7 @@ public void sierpinski(int x, int y, int len)
 }
 public void sierpinski2(int x, int y, int len) 
 {
+  noStroke();
   if (len <= 10)
     rect(x, y, len, len);
   else {
@@ -41,5 +43,18 @@ public void sierpinski2(int x, int y, int len)
     sierpinski2(x, y+len/3, len/3);
     sierpinski2(x+2*len/3, y+len/3, len/3);
     sierpinski2(x+len/3, y+2*len/3, len/3);
+    noFill();
+    strokeWeight(3);
+    stroke(50,50,50);
+    sierpinski3(x+len/2,y+len/2,len/3.1);
+  }
+}
+public void sierpinski3(int x, int y, float len) 
+{
+  if (len <= 10)
+    ellipse(x, y, len, len);
+  else {
+    ellipse(x,y,len,len);
+    sierpinski3(x,y,len-20);
   }
 }
